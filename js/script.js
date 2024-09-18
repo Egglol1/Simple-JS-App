@@ -16,3 +16,7 @@ pokemonList = [{
     weight: 9.0,
     types: ['Water']
 }];
+
+for (let i = 0; i < length(pokemonList); i++) {
+    document.write(pokemonList(i))
+}
