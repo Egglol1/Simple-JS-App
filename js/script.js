@@ -6,7 +6,9 @@ let pokemonRepository = (function() {
     ];
 
     function add(pokemon) {
-        pokemonList.push(pokemon);
+        if (((typeof pokemon) === "object") && (Object.keys(pokemon) == ['name', 'height', 'weight', 'types'])); {
+            pokemonList.push(pokemon);
+        }
     }
 
     function getAll() {
@@ -20,10 +22,12 @@ let pokemonRepository = (function() {
 })();
 
 console.log(pokemonRepository.getAll());
+pokemonRepository.add({name: 'Pikachu', height: 0.4, weight: 6.0, types: ['Electric']});
+console.log(pokemonRepository.getAll());
 
 pokemonRepository.getAll().forEach(function(item) {
     document.write(item.name + ' (Height:' + item.height + ") ")
     if (item.height >= 0.7) {
-        document.write(' - Wow! That\'s Big!')
+        document.write(' - Wow! That\'s Big! ')
     }
 });
