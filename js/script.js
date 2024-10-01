@@ -32,7 +32,7 @@ let pokemonRepository = (function() {
     }
 
     function add(pokemon) {
-        if (((typeof pokemon) === "object") && (Object.keys(pokemon) == ['name', 'height', 'weight', 'types'])); {
+        if ((typeof pokemon) === "object"); {
             pokemonList.push(pokemon);
         }
     }
