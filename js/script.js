@@ -70,8 +70,6 @@ let pokemonRepository = (function() {
 })();
 
 console.log(pokemonRepository.getAll());
-pokemonRepository.add({name: 'Pikachu', height: 0.4, weight: 6.0, types: ['Electric']});
-console.log(pokemonRepository.getAll());
 
 let element = document.querySelector('.pokemon-list');
 
