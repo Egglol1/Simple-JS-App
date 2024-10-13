@@ -46,8 +46,8 @@ let pokemonRepository = (function() {
         let button = document.createElement('button')
         button.innerText = pokemon.name
         button.classList.add('.button')
-        button.classList.add('btn')
-        button.classList.add('btn-primary')
+        button.classList.add('.btn')
+        button.classList.add('.btn-primary')
         button.dataset.toggle = "modal";
         button.dataset.target = "#modal-container";
         button.addEventListener('click', function () {
@@ -62,12 +62,16 @@ let pokemonRepository = (function() {
         loadDetails(pokemon).then(function () {
           let titleElement = document.querySelector('.modal-title');
           titleElement.innerText = pokemon.name;
+
           let contentElement = document.querySelector('.pokemon-text');
           contentElement.innerText = 'Height: ' + pokemon.height;
-          let imgArea = document.querySelector('.modal');
-          console.log(imgArea);
+
           let imageElement = document.querySelector('.pokemon-img');
           imageElement.src = pokemon.imageUrl;
+
+          let modalVis = document.querySelector('#modal-container');
+          modalVis.classList.add('.is-visible')
+          console.log(modalVis);
         });
     }
 
