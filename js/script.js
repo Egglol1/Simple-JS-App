@@ -46,20 +46,24 @@ let pokemonRepository = (function() {
         let button = document.createElement('button')
         button.innerText = pokemon.name
         button.classList.add('.button')
+        button.classList.add('btn')
+        button.classList.add('btn-primary')
         button.addEventListener('click', function () {
             pokemonRepository.showDetails(pokemon);
         });
         listItem.appendChild(button);
+        listItem.classList.add('.list-group-item')
         element.appendChild(listItem)
     }
 
     function showDetails(pokemon) {
         loadDetails(pokemon).then(function () {
           showModal(pokemon.name, pokemon.height);
-          let container = document.querySelector('.modal')
+          let modalList = document.querySelectorAll('.modal')
+          console.log(modalList);
           let imageElement = document.createElement('img')
           imageElement.src = pokemon.imageUrl
-          container.appendChild(imageElement);
+          modalList[1].appendChild(imageElement);
         });
     }
 
