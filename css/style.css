@@ -6,27 +6,8 @@
     --bold-heading: 700rgb(224, 159, 84)
 }
 
-body {
-    background-color: RGB(238,245,247);
-    font-family: 'Bitter', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-h1 {
-    font-size: 30px;
-    font-weight: var(--bold-heading);
-}
-
-h2 {
-    font-size: 24px;
-    font-weight: var(--bold-heading);
-}
-
-h3 {
-    font-size: 18px;
-    font-weight: var(--bold-heading);
+.list-group {
+  margin-top: 60px;
 }
 
 button,
