@@ -1,3 +1,7 @@
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 let pokemonRepository = (function() {
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
@@ -8,7 +12,7 @@ let pokemonRepository = (function() {
         }).then(function (json) {
           json.results.forEach(function (item) {
             let pokemon = {
-              name: item.name,
+              name: capitalizeFirstLetter(item.name),
               detailsUrl: item.url
             };
             add(pokemon);
@@ -25,7 +29,9 @@ let pokemonRepository = (function() {
         }).then(function (details) {
             item.imageUrl = details.sprites.front_default;
             item.height = details.height;
-            item.types = details.types;
+            item.types = capitalizeFirstLetter(details.types.map(typeInfo => typeInfo.type.name).join(', '));
+            item.abilities = capitalizeFirstLetter(details.abilities.map(abilityInfo => abilityInfo.ability.name).join(', '));
+            item.id = details.id;
         }).catch(function (e) {
             console.error(e);
         });
@@ -54,6 +60,7 @@ let pokemonRepository = (function() {
             pokemonRepository.showDetails(pokemon);
         });
         listItem.appendChild(button);
+        listItem.classList.add('.grid__item')
         listItem.classList.add('.list-group-item')
         element.appendChild(listItem)
     }
@@ -64,7 +71,7 @@ let pokemonRepository = (function() {
           titleElement.innerText = pokemon.name;
 
           let contentElement = document.querySelector('.pokemon-text');
-          contentElement.innerText = 'Height: ' + pokemon.height;
+          contentElement.innerText = 'Height: ' + pokemon.height + ' Types: ' + pokemon.types + ' Abilities: ' + pokemon.abilities + ' Id: ' + pokemon.id;
 
           let imageElement = document.querySelector('.pokemon-img');
           imageElement.src = pokemon.imageUrl;
@@ -84,9 +91,6 @@ let pokemonRepository = (function() {
         loadDetails: loadDetails
     };
 })();
-
-
-console.log(pokemonRepository.getAll());
 
 let element = document.querySelector('.pokemon-list');
 
