@@ -93,6 +93,29 @@ button:hover, button:focus,
     margin-bottom: 0;
   }
 
+/*start grid fallback*/
+.grid__item {
+  display: inline-block;
+  width: 20%;
+ }
+/* end grid fallback */
+
+@supports (display: grid) {
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.grid__item {
+  background-color: lightgray;
+  width: auto;
+  min-height: auto;
+  margin: 0;
+  padding: 10%;
+}
+}
+
 @media all and (max-width: 820px) {
     /* shared code */
     @media all and (max-width: 500px) {
