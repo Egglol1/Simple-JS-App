@@ -32,7 +32,7 @@ let pokemonRepository = (function() {
     }
 
     function add(pokemon) {
-        if ((typeof pokemon) === "object"); {
+        if ((typeof pokemon) === 'object'); {
             pokemonList.push(pokemon);
         }
     }
@@ -48,8 +48,8 @@ let pokemonRepository = (function() {
         button.classList.add('.button')
         button.classList.add('.btn')
         button.classList.add('.btn-primary')
-        button.dataset.toggle = "modal";
-        button.dataset.target = "#modal-container";
+        button.dataset.toggle = 'modal';
+        button.dataset.target = '#modal-container';
         button.addEventListener('click', function () {
             pokemonRepository.showDetails(pokemon);
         });
